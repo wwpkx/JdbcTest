@@ -35,11 +35,28 @@ cn.itcast.jdbc.domain 实体，对应数据库的表
 cn.itcast.jdbc.dao 数据访问层
 cn.itcast.jdbc.dao.DaoFactory 使用配置文件配置数据库信息
 cn.itcast.jdbc.service 业务层
+cn.itcast.jdbc.dao.refactor 通过反射简化代码
+	MyDaoTemplate 将增删改查抽象为update和find
+	RowMapper 将结果集交给子类处理
 
 事务：
 TxTest.java
 SavePointTest
 
 连接池：
+自定义连接池
+	MyConnectionHandler
+	MyDataSource
+	MyJdbcUtils
+DBCP连接池：
+	commons-collections-3.1.jar
+	commons-pool.jar
+	commons-dbcp-1.2.2.jar
+	JdbcDbcpUtils
+spring框架，使用别人提供的数据源：
+	JdbcTemplate
+	NamedJdbcTemplate NamedParameterJdbcTemplate在JdbcTemplate的基础上，sql语句中的?改为了命名参数
+	SimpleJdbcTemplate在NamedParameterJdbcTemplate的基础上添加了泛型和可变长度参数支持
+	UserDaoSpringImpl 使用spring框架实现增删改查例子
 
 

@@ -73,7 +73,7 @@ public class User {
 		return money;
 	}
 
-	public void setMoney(Float money) {
+	public void setMoney(float money) {
 		this.money = money;
 	}
 }

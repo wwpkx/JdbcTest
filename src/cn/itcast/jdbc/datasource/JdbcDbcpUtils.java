@@ -9,7 +9,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
-import cn.itcast.jdbc.datasource.MyDataSource2;
+import org.apache.commons.dbcp.BasicDataSourceFactory;
 
 /**
  * 
@@ -18,19 +18,27 @@ import cn.itcast.jdbc.datasource.MyDataSource2;
  * @author <a href="mailto:liyongibm@hotmail.com">????</a>
  * 
  */
-public final class JdbcUtils {
+public final class JdbcDbcpUtils {
 	private static String url = "jdbc:mysql://localhost:3306/jdbc";
 	private static String user = "root";
 	private static String password = "";
-	private static MyDataSource2 myDataSource = null;
+	private static DataSource myDataSource = null;
 
-	private JdbcUtils() {
+	private JdbcDbcpUtils() {
 	}
 
 	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			myDataSource = new MyDataSource2();
+			
+			Properties prop = new Properties();
+			// prop.setProperty("driverClassName", "com.mysql.jdbc.Driver");
+			// prop.setProperty("user", "user");
+
+			InputStream is = JdbcDbcpUtils.class.getClassLoader()
+					.getResourceAsStream("dbcpconfig.properties");
+			prop.load(is);
+			myDataSource = BasicDataSourceFactory.createDataSource(prop);
 		} catch (Exception e) {
 			throw new ExceptionInInitializerError(e);
 		}
@@ -59,7 +67,7 @@ public final class JdbcUtils {
 			} finally {
 				if (conn != null)
 					try {
-						myDataSource.free(conn);
+						conn.close();
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

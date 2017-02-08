@@ -17,7 +17,7 @@ import javax.sql.DataSource;
  * @author <a href="mailto:liyongibm@gmail.com">liyong</a>
  * 
  */
-public class MyDataSource2 implements DataSource{
+public class MyDataSource implements DataSource{
 	private static String url = "jdbc:mysql://localhost:3306/jdbc";
 	private static String user = "root";
 	private static String password = "";
@@ -27,7 +27,7 @@ public class MyDataSource2 implements DataSource{
 	private int currentCount = 0;	//当前有已经创建了多少conn
 	LinkedList<Connection> connectionsPool = new LinkedList<Connection>();
 
-	public MyDataSource2() {
+	public MyDataSource() {
 		try {
 			for (int i = 0; i < initCount; i++) {
 				this.connectionsPool.addLast(this.createConnection());

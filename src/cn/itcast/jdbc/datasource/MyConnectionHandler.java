@@ -15,9 +15,9 @@ import java.sql.Connection;
 class MyConnectionHandler implements InvocationHandler {
 	private Connection realConnection;
 	private Connection warpedConnection;
-	private MyDataSource2 dataSource;
+	private MyDataSource dataSource;
 
-	public MyConnectionHandler(MyDataSource2 dataSource) {
+	public MyConnectionHandler(MyDataSource dataSource) {
 		this.dataSource = dataSource;
 	}
 
