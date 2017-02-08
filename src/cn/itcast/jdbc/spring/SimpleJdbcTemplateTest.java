@@ -3,7 +3,7 @@ package cn.itcast.jdbc.spring;
 import org.springframework.jdbc.core.simple.ParameterizedBeanPropertyRowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 
-import cn.itcast.jdbc.datasource.MyJdbcUtils;
+import cn.itcast.jdbc.datasource.JdbcUtils_My;
 import cn.itcast.jdbc.domain.User;
 
 /**
@@ -14,7 +14,7 @@ import cn.itcast.jdbc.domain.User;
  * 
  */
 public class SimpleJdbcTemplateTest {
-	static SimpleJdbcTemplate simple = new SimpleJdbcTemplate(MyJdbcUtils
+	static SimpleJdbcTemplate simple = new SimpleJdbcTemplate(JdbcUtils_My
 			.getDataSource());
 
 	/**

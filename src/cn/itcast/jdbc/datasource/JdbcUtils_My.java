@@ -15,13 +15,13 @@ import cn.itcast.jdbc.datasource.MyDataSource;
  * @author <a href="mailto:liyongibm@hotmail.com">????</a>
  * 
  */
-public final class MyJdbcUtils {
+public final class JdbcUtils_My {
 	private static String url = "jdbc:mysql://localhost:3306/jdbc";
 	private static String user = "root";
 	private static String password = "";
 	private static MyDataSource myDataSource = null;
 
-	private MyJdbcUtils() {
+	private JdbcUtils_My() {
 	}
 
 	static {

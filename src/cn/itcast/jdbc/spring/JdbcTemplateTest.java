@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import cn.itcast.jdbc.JdbcUtils;
-import cn.itcast.jdbc.datasource.MyJdbcUtils;
+import cn.itcast.jdbc.datasource.JdbcUtils_My;
 import cn.itcast.jdbc.domain.User;
 
 /**
@@ -28,7 +28,7 @@ import cn.itcast.jdbc.domain.User;
  */
 public class JdbcTemplateTest {
 
-	static JdbcTemplate jdbc = new JdbcTemplate(MyJdbcUtils.getDataSource());
+	static JdbcTemplate jdbc = new JdbcTemplate(JdbcUtils_My.getDataSource());
 
 	/**
 	 * @param args

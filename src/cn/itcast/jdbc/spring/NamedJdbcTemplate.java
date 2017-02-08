@@ -11,7 +11,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import cn.itcast.jdbc.JdbcUtils;
-import cn.itcast.jdbc.datasource.MyJdbcUtils;
+import cn.itcast.jdbc.datasource.JdbcUtils_My;
 import cn.itcast.jdbc.domain.User;
 
 /**
@@ -23,7 +23,7 @@ import cn.itcast.jdbc.domain.User;
  */
 public class NamedJdbcTemplate {
 	static NamedParameterJdbcTemplate named = new NamedParameterJdbcTemplate(
-			MyJdbcUtils.getDataSource());
+			JdbcUtils_My.getDataSource());
 
 	/**
 	 * @param args

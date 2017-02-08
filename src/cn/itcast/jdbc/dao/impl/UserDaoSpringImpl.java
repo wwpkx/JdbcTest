@@ -8,7 +8,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import cn.itcast.jdbc.dao.UserDao;
-import cn.itcast.jdbc.datasource.MyJdbcUtils;
+import cn.itcast.jdbc.datasource.JdbcUtils_My;
 import cn.itcast.jdbc.domain.User;
 
 /**
@@ -20,7 +20,7 @@ import cn.itcast.jdbc.domain.User;
  */
 public class UserDaoSpringImpl implements UserDao {
 	private SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(
-			MyJdbcUtils.getDataSource());
+			JdbcUtils_My.getDataSource());
 
 	public void addUser(User user) {
 		String sql = "insert into user (name, money, birthday) values (:name, :money, :birthday)";

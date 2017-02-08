@@ -53,6 +53,9 @@ DBCP连接池：
 	commons-pool.jar
 	commons-dbcp-1.2.2.jar
 	JdbcDbcpUtils
+c3p0连接池：	
+	c3p0-0.9.2-pre1.jar
+	mchange-commons-0.2.jar
 spring框架，使用别人提供的数据源：
 	JdbcTemplate
 	NamedJdbcTemplate NamedParameterJdbcTemplate在JdbcTemplate的基础上，sql语句中的?改为了命名参数

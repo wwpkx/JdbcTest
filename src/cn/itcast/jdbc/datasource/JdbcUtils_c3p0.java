@@ -11,6 +11,8 @@ import javax.sql.DataSource;
 
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
 /**
  * 
  * 2008-12-6
@@ -18,27 +20,27 @@ import org.apache.commons.dbcp.BasicDataSourceFactory;
  * @author <a href="mailto:liyongibm@hotmail.com">????</a>
  * 
  */
-public final class JdbcDbcpUtils {
+public final class JdbcUtils_c3p0 {
 	private static String url = "jdbc:mysql://localhost:3306/jdbc";
 	private static String user = "root";
 	private static String password = "";
 	private static DataSource myDataSource = null;
 
-	private JdbcDbcpUtils() {
-	}
+	private static ComboPooledDataSource ds = null;
 
 	static {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+//			ds = new ComboPooledDataSource();
+//			ds.setDriverClass("com.mysql.jdbc.Driver");
+//			ds.setJdbcUrl(url);
+//			ds.setUser(user);
+//			ds.setPassword(password);
+//			ds.setInitialPoolSize(10);
+//			ds.setMinPoolSize(5);
+//			ds.setMaxPoolSize(20);
 			
-			Properties prop = new Properties();
-			// prop.setProperty("driverClassName", "com.mysql.jdbc.Driver");
-			// prop.setProperty("user", "user");
-
-			InputStream is = JdbcDbcpUtils.class.getClassLoader()
-					.getResourceAsStream("dbcpconfig.properties");
-			prop.load(is);
-			myDataSource = BasicDataSourceFactory.createDataSource(prop);
+//			ds = new ComboPooledDataSource();	//不指定名字，则使用默认配置
+			ds = new ComboPooledDataSource("mysql");
 		} catch (Exception e) {
 			throw new ExceptionInInitializerError(e);
 		}
@@ -53,24 +55,28 @@ public final class JdbcDbcpUtils {
 	}
 
 	public static void free(ResultSet rs, Statement st, Connection conn) {
-		try {
-			if (rs != null)
-				rs.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
+		if (rs != null) {
 			try {
-				if (st != null)
-					st.close();
-			} catch (SQLException e) {
+				rs.close();
+			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				if (conn != null)
-					try {
-						conn.close();
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+			}
+			rs = null;
+
+		}
+		if (st != null) {
+			try {
+				st.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 	}
